@@ -1,10 +1,13 @@
 -------------------------------------------------------------------------------
 -- Tarea 1 - Laboratorio de Lenguajes de Programación I (CI-3661)
--- Nombre del estudiante: [INSERTE SU NOMBRE AQUÍ]
--- Carnet: [INSERTE SU CARNET AQUÍ]
+-- Nombre del estudiante: [Gabriel De Ornelas]
+-- Carnet: [15-10377]
 -------------------------------------------------------------------------------
 
 module Tarea1 where
+
+import Data.Char
+import Text.Read
 
 -------------------------------------------------------------------------------
 -- Problema 1: Palíndromo
@@ -14,7 +17,10 @@ module Tarea1 where
 -- (se lee igual al derecho y al revés). La función debe devolver un simple
 -- valor booleano (True o False). Implementa esto usando recursión explícita.
 esPalindromo :: String -> Bool
-esPalindromo s = undefined
+esPalindromo "" = True --Caso base cadena vacia
+esPalindromo [s] = True --Caso base length s==1
+esPalindromo s = if head s == last s then esPalindromo (tail (init s)) --Vamos de afuera hacia adentro en la cadena
+                else False
 
 -------------------------------------------------------------------------------
 -- Problema 2: Producto de Elementos Pares en una Lista
@@ -25,7 +31,11 @@ esPalindromo s = undefined
 -- de números enteros, pero solo incluyendo aquellos elementos que son pares.
 -- La función debe devolver 1 si la lista está vacía o no contiene números pares.
 productoParesRec :: [Integer] -> Integer
-productoParesRec xs = undefined
+productoParesRec [] = 1
+productoParesRec xs =   if head xs `mod` 2 == 0 then
+                            head xs * productoParesRec (tail xs)
+                        else
+                            1 * productoParesRec (tail xs)
 
 -------------------------------------------------------------------------------
 -- Problema 3: Parseo Condicional con Either
@@ -36,8 +46,20 @@ productoParesRec xs = undefined
 -- devuelve Right Int. Si la conversión falla (porque la cadena no es puramente
 -- numérica), devuelve Left String con la cadena original transformada a mayúsculas.
 -- Nota: Necesitarás funciones auxiliares para el parseo seguro y la conversión a mayúsculas.
+
+--borrar
+-- Nota: Para que estas pruebas funcionen correctamente, la implementación
+-- del alumno debe usar funciones estándar de Haskell para toUpper y para
+-- intentar parsear a Int (e.g., readMaybe).
+
+parsear :: Maybe Int -> Either String Int
+parsear (Just n) = n
+parsear Nothing = "n"
+
+
 parsearCondicional :: [String] -> [Either String Int]
-parsearCondicional ss = undefined
+parsearCondicional [] = [] 
+parsearCondicional ss = (parsear (head ss)):parsearCondicional (tail ss)
 
 -------------------------------------------------------------------------------
 -- Problema 4: Suma Acumulada Condicional
