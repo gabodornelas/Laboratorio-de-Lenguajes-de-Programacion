@@ -2,8 +2,8 @@
 -- Tests.hs - Pruebas Unitarias para Tarea 1
 -- Usa el framework HUnit. Para compilar y correr:
 -- 1. Asegúrate de tener la librería HUnit instalada (e.g., usando cabal o stack).
--- 2. Compila: ghc --make Tests.hs
--- 3. Ejecuta: ./Tests
+-- 2. Compila: ghc --make Test.hs
+-- 3. Ejecuta: ./Test.exe
 -------------------------------------------------------------------------------
 
 import Tarea1
