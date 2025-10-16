@@ -75,7 +75,7 @@ sumaAcumuladaCondicional umbral xs = foldl (+) 0 (filter (umbral<) xs)
 -- suma de x e y (x+y) es un número impar. Utiliza Listas por Comprensión para
 -- la implementación.
 coordenadasImpares :: Int -> [(Int, Int)]
-coordenadasImpares n = undefined
+coordenadasImpares n = [(x,y) | x <- [1..n], y <- [1..n], odd (x+y)]
 
 -------------------------------------------------------------------------------
 -- Problema 6: Descomposición Segura de Lista
