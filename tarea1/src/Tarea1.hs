@@ -32,9 +32,9 @@ esPalindromo s = if head s == last s then esPalindromo (tail (init s)) --Vamos d
 -- La función debe devolver 1 si la lista está vacía o no contiene números pares.
 productoParesRec :: [Integer] -> Integer
 productoParesRec [] = 1
-productoParesRec xs =   if head xs `mod` 2 == 0 then
+productoParesRec xs =   if head xs `mod` 2 == 0 then    --Es par
                             head xs * productoParesRec (tail xs)
-                        else
+                        else    --Es impar
                             1 * productoParesRec (tail xs)
 
 -------------------------------------------------------------------------------
@@ -52,14 +52,14 @@ productoParesRec xs =   if head xs `mod` 2 == 0 then
 -- del alumno debe usar funciones estándar de Haskell para toUpper y para
 -- intentar parsear a Int (e.g., readMaybe).
 
-parsear :: Maybe Int -> Either String Int
-parsear (Just n) = n
-parsear Nothing = "n"
-
+parsear :: String -> Either String Int
+parsear s
+        | (readMaybe s :: Maybe Int) == Nothing = Left (map toUpper s)
+        | otherwise = Right (read s :: Int)
 
 parsearCondicional :: [String] -> [Either String Int]
-parsearCondicional [] = [] 
-parsearCondicional ss = (parsear (head ss)):parsearCondicional (tail ss)
+parsearCondicional [] = []
+parsearCondicional ss = (parsear (head ss)):(parsearCondicional (tail ss)) 
 
 -------------------------------------------------------------------------------
 -- Problema 4: Suma Acumulada Condicional
