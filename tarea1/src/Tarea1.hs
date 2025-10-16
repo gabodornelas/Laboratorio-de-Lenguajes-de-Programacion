@@ -86,6 +86,7 @@ coordenadasImpares n = [(x,y) | x <- [1..n], y <- [1..n], odd (x+y)]
 -- Si la lista está vacía, devuelve Nothing. Si la lista no está vacía,
 -- devuelve Just con una tupla que contiene el primer elemento y el resto de la lista.
 descomponerListaSegura :: [a] -> Maybe (a, [a])
-descomponerListaSegura xs = undefined
+descomponerListaSegura [] = Nothing
+descomponerListaSegura xs = Just (head xs, tail xs)
 
 -------------------------------------------------------------------------------
