@@ -53,6 +53,7 @@ parsear s
 
 parsearCondicional :: [String] -> [Either String Int]
 parsearCondicional [] = []
+--parseo head y la concateno con lo que devuelva la funcion con tail
 parsearCondicional ss = (parsear (head ss)):(parsearCondicional (tail ss)) 
 
 -------------------------------------------------------------------------------
@@ -65,6 +66,7 @@ parsearCondicional ss = (parsear (head ss)):(parsearCondicional (tail ss))
 -- filtrados utilizando una operación de plegado (fold).
 sumaAcumuladaCondicional :: Float -> [Float] -> Float
 sumaAcumuladaCondicional umbral xs = foldl (+) 0 (filter (umbral<) xs)
+--(umbral<) es la funcion que devuelve numeros mayores al umbral
 
 -------------------------------------------------------------------------------
 -- Problema 5: Generación de Coordenadas Impares
