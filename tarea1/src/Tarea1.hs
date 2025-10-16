@@ -46,12 +46,6 @@ productoParesRec xs =   if head xs `mod` 2 == 0 then    --Es par
 -- devuelve Right Int. Si la conversión falla (porque la cadena no es puramente
 -- numérica), devuelve Left String con la cadena original transformada a mayúsculas.
 -- Nota: Necesitarás funciones auxiliares para el parseo seguro y la conversión a mayúsculas.
-
---borrar
--- Nota: Para que estas pruebas funcionen correctamente, la implementación
--- del alumno debe usar funciones estándar de Haskell para toUpper y para
--- intentar parsear a Int (e.g., readMaybe).
-
 parsear :: String -> Either String Int
 parsear s
         | (readMaybe s :: Maybe Int) == Nothing = Left (map toUpper s)
@@ -70,7 +64,7 @@ parsearCondicional ss = (parsear (head ss)):(parsearCondicional (tail ss))
 -- que son mayores que el umbral, y luego calcular la suma de los números
 -- filtrados utilizando una operación de plegado (fold).
 sumaAcumuladaCondicional :: Float -> [Float] -> Float
-sumaAcumuladaCondicional umbral xs = undefined
+sumaAcumuladaCondicional umbral xs = foldl (+) 0 (filter (umbral<) xs)
 
 -------------------------------------------------------------------------------
 -- Problema 5: Generación de Coordenadas Impares
